@@ -22,7 +22,7 @@ class Todo: Object{
     var list = [NSDictionary]()
     
     //新規登録
-    func create(title: String){
+    func create(title: String) {
         //データベース接続
         let realm = try! Realm()
         
@@ -51,8 +51,18 @@ class Todo: Object{
         }
     }
     
-    
     //取得
+    func getAll() {
+        let realm = try! Realm()
+        
+        let list = realm.objects(Todo.self)
+        
+        for value in list {
+            let todo = ["id": value.id, "title": value.title, "date": value.date] as NSDictionary
+            
+            self.list.append(todo)
+        }
+    }
     
     //更新
     
