@@ -13,6 +13,7 @@
 		48D272F6214F6F6500A6922C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48D272F5214F6F6500A6922C /* Assets.xcassets */; };
 		48D272F9214F6F6500A6922C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D272F7214F6F6500A6922C /* LaunchScreen.storyboard */; };
 		48D27301214F7F7000A6922C /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D27300214F7F7000A6922C /* AddViewController.swift */; };
+		48D27303214F89C300A6922C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D27302214F89C300A6922C /* Todo.swift */; };
 		FD85A4A7D10849C54FD19F84 /* Pods_RealmTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D2CF2CFF98EE9261B26B9A /* Pods_RealmTodo.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		48D272F8214F6F6500A6922C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48D272FA214F6F6500A6922C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D27300214F7F7000A6922C /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		48D27302214F89C300A6922C /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				48D272F0214F6F6200A6922C /* ViewController.swift */,
 				48D272F2214F6F6200A6922C /* Main.storyboard */,
 				48D27300214F7F7000A6922C /* AddViewController.swift */,
+				48D27302214F89C300A6922C /* Todo.swift */,
 				48D272F5214F6F6500A6922C /* Assets.xcassets */,
 				48D272F7214F6F6500A6922C /* LaunchScreen.storyboard */,
 				48D272FA214F6F6500A6922C /* Info.plist */,
@@ -208,6 +211,7 @@
 				48D272F1214F6F6200A6922C /* ViewController.swift in Sources */,
 				48D272EF214F6F6200A6922C /* AppDelegate.swift in Sources */,
 				48D27301214F7F7000A6922C /* AddViewController.swift in Sources */,
+				48D27303214F89C300A6922C /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
