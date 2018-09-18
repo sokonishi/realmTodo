@@ -55,8 +55,10 @@ class Todo: Object{
     func getAll() {
         let realm = try! Realm()
         
+        //データベースから情報取得
         let list = realm.objects(Todo.self)
         
+        //配列に入れる
         for value in list {
             let todo = ["id": value.id, "title": value.title, "date": value.date] as NSDictionary
             
@@ -65,7 +67,25 @@ class Todo: Object{
     }
     
     //更新
+    func edit() {
+        let realm = try! Realm()
+        
+    }
     
     //削除
+    func delete(id: Int) {
+        //DBに接続
+        let realm = try! Realm()
+        
+        //削除するデータを取得
+        //.filter("id = 1").firstで条件を絞る.firstは１こ目を取ってくる、実際は無くていい
+        let todo = realm.objects(Todo.self).filter("id = \(id)").first
+        
+        //取得したデータを削除する
+        try! realm.write {
+            realm.delete(todo!)
+        }
+    }
+    
     
 }

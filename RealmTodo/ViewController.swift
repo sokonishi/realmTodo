@@ -24,8 +24,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewWillAppear(_ animated: Bool) {
         
         //一覧表示
+        //一旦初期化
         todo.list.removeAll()
+        //取得
         todo.getAll()
+        //アップデート
         tableView.reloadData()
         
     }
@@ -35,6 +38,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         //todo.listの中の数
         return todo.list.count
+        //print(todo.list)
         
     }
     
@@ -48,5 +52,25 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return cell
     }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        //左スライドの処理
+        if editingStyle == .delete {
+            
+            //databaseから削除するデータを指定する為に書いている
+            let id = todo.list[indexPath.row]["id"] as! Int
+            
+            //DBから削除する
+            todo.delete(id: id)
+            
+            //画面からtodoを消している(databaseはまだ)
+            //配列から消す
+            todo.list.remove(at: indexPath.row)
+            //画面から消す
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+        
+    }
 }
 
