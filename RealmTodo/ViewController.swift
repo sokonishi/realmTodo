@@ -53,10 +53,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         //左スライドの処理
         if editingStyle == .delete {
-            
             //databaseから削除するデータを指定する為に書いている
             let id = todo.list[indexPath.row]["id"] as! Int
             
@@ -68,9 +66,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             todo.list.remove(at: indexPath.row)
             //画面から消す
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
         }
-        
+    }
+    
+    //ボタンが押されたのを検知したときの処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let id = todo.list[indexPath.row]["id"]!
+        performSegue(withIdentifier: "Segue", sender: id)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Segue" {
+            let addVC = segue.destination as! AddViewController
+            addVC.id = sender as! Int
+        }
     }
 }
 

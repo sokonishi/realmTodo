@@ -84,6 +84,7 @@
                         <viewLayoutGuide key="safeArea" id="TGp-n6-155"/>
                     </view>
                     <connections>
+                        <outlet property="tapButton" destination="gxs-TC-31q" id="IiZ-xh-jV5"/>
                         <outlet property="textField" destination="Q7v-Od-LQ3" id="2aw-oO-g4y"/>
                     </connections>
                 </viewController>
@@ -111,6 +112,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rYd-ZC-P2h"/>
+        <segue reference="DFH-Ew-CD3"/>
     </inferredMetricsTieBreakers>
 </document>

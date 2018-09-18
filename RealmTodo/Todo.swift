@@ -66,6 +66,20 @@ class Todo: Object{
         }
     }
     
+    //特定のデータのみ取得
+    //-> Todoみたいな戻り値がある時は受け取る側でletで定義してあげる
+    func getDate(id: Int) -> Todo {
+        
+        //DB接続
+        let realm = try! Realm()
+        
+        //データを取得
+        let todo = realm.objects(Todo.self).filter("id = \(id)").first
+        
+        //取得したデータを返す
+        return todo!
+    }
+    
     //更新
     func edit() {
         let realm = try! Realm()
