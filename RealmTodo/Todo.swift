@@ -81,8 +81,15 @@ class Todo: Object{
     }
     
     //更新
-    func edit() {
+    func update(id: Int,title: String) {
         let realm = try! Realm()
+        
+        let todo = realm.objects(Todo.self).filter("id = \(id)").first
+        
+        //更新する時
+        try! realm.write {
+            todo!.title = title
+        }
         
     }
     

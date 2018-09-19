@@ -32,12 +32,22 @@ class AddViewController: UIViewController {
 
     @IBAction func tapButton(_ sender: UIButton) {
         
-        //新規保存
-        //realmを使う
-        todo.create(title: textField.text!)
+        //空だったら入力させない
+        if textField.text! == "" {
+            //アラートを表示
+            
+            return
+        }
         
-        //更新処理
-        
+        if id == Int() {
+            //新規保存
+            //realmを使う
+            todo.create(title: textField.text!)
+            
+        } else {
+            //更新処理
+            todo.update(id: id, title: textField.text!)
+        }
         
         //navigationControllerを使った時に元の画面に戻る書き方
         self.navigationController?.popViewController(animated: true)
