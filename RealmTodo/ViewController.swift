@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ViewController: UIViewController{
 
     @IBOutlet weak var tableView: UITableView!
     let todo = Todo()
@@ -33,6 +33,59 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
+//    //行数
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//        //todo.listの中の数
+//        return todo.list.count
+//        //print(todo.list)
+//
+//    }
+//
+//    //セルの中身を決める
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = UITableViewCell()
+//
+//        cell.textLabel?.text = todo.list[indexPath.row]["title"] as? String
+//
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        //左スライドの処理
+//        if editingStyle == .delete {
+//            //databaseから削除するデータを指定する為に書いている
+//            let id = todo.list[indexPath.row]["id"] as! Int
+//
+//            //DBから削除する
+//            todo.delete(id: id)
+//
+//            //画面からtodoを消している(databaseはまだ)
+//            //配列から消す
+//            todo.list.remove(at: indexPath.row)
+//            //画面から消す
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
+    
+    //ボタンが押されたのを検知したときの処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let id = todo.list[indexPath.row]["id"]!
+        performSegue(withIdentifier: "Segue", sender: id)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Segue" {
+            let addVC = segue.destination as! AddViewController
+            addVC.id = sender as! Int
+        }
+    }
+}
+
+//機能拡張
+extension ViewController: UITableViewDelegate,UITableViewDataSource {
+    
     //行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -51,7 +104,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //左スライドの処理
         if editingStyle == .delete {
@@ -69,17 +122,5 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
-    //ボタンが押されたのを検知したときの処理
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = todo.list[indexPath.row]["id"]!
-        performSegue(withIdentifier: "Segue", sender: id)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Segue" {
-            let addVC = segue.destination as! AddViewController
-            addVC.id = sender as! Int
-        }
-    }
 }
 
